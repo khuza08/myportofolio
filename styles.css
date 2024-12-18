@@ -1,0 +1,306 @@
+* {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    outline: none;
+}
+
+body {
+    min-height: 100vh;
+    background: black;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+}
+
+/* Fade-out effect */
+.fade-out {
+    opacity: 0;
+}
+
+/* Fade-in effect */
+.fade-in {
+    opacity: 1;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+a:hover {
+    color: rgb(201, 201, 201);
+}
+
+
+/* header*/
+header {
+    position: relative;
+    padding: 0 2rem;
+    z-index: 5;
+}
+
+.navbar{
+    width: 100%;
+    height: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    z-index: 6;
+    justify-content: space-between;
+}
+
+.navbar .links a.active {
+    color: #f0f0f0; /* Ganti dengan warna pilihanmu */
+    border-bottom: 2px solid #f0f0f0; /* Ini yang akan jadi indikator aktif */
+}
+
+.navbar .logo a{
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.navbar .links{
+    display: flex;
+    gap: 2vw;
+    justify-content: center;
+}
+
+.navbar .toggle-btn{
+    color:rgb(255, 255, 255);
+    font-size: 1.5rem;
+    cursor: pointer;
+    display:none;
+}
+
+.action-btn{
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: scale 0.2 ease;
+}
+.action-btn:hover{
+    scale: 1.05;
+    color: whitesmoke;
+}
+
+.action-btn:active{
+    scale: 0.95;
+}
+
+
+.dropdown-menu{
+    display: none;
+    position: absolute;
+    right: 2rem;
+    top: 60px;
+    height: 0;
+    width: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: height .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dropdown-menu.open{
+    height: 240px;
+}
+
+.dropdown-menu li{
+    padding: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown-menu .action-btn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.dropdown-menu .dropdown-item {
+    position: relative;
+    padding-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+.dropdown-menu .dropdown-item.active {
+    color: #f0f0f0; /* Warna aktif */
+    border-bottom: 2px solid #f0f0f0; /* Garis bawah untuk indikator aktif */
+}
+
+.dropdown-menu .dropdown-item:hover {
+    color: rgb(201, 201, 201);
+    border-bottom: 2px solid rgb(201, 201, 201); /* Hover effect untuk border */
+}
+
+.nav-link {
+    position: relative;
+    display: inline-block;
+    padding: 5px 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #333;
+    transition: all 0.3s ease;
+}
+
+/* Efek slide ketika di-hover */
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* hero */
+section#hero {
+    color: white;
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#hero h1 {
+    font-size: 2.5rem;
+    font-family: poppins;
+    color: #fff;
+
+      }
+
+#hero span {
+    font-size: 1.8rem;
+    font-family: poppins;
+    font-weight: 100;
+    font-style: italic;
+}
+
+#hero ul {
+    display: flex;
+}
+
+#hero a {
+    display: inline-block;
+    padding: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    transition: text-shadow 0.6s ease, transform 0.4s ease;
+}
+
+#hero a:hover {
+    transform: scale(1.1);
+    text-shadow: 0 0px 10px rgba(250, 250, 250, 1); /* Shadow teks saat hover */
+}
+
+/* galer i*/
+
+
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+  }
+
+#bgvideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -10;
+    opacity: 15%;
+    background-size: cover;
+    overflow: hidden;
+}
+
+
+
+/*responsive*/
+
+
+@media(max-width: 768px){
+
+    .navbar .links,
+    .navbar .action-btn {
+        display: none;
+    }
+
+    .navbar .toggle-btn {
+        display: block;
+    }
+
+    .dropdown-menu {
+        display: block;
+    }
+
+    #hero h1 {
+        font-size: 2.3rem;
+    }
+
+    #hero span {
+        font-size: 1.8rem;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .dropdown-menu{
+        left: 2rem;
+        width: unset;
+    }
+
+
+}
+
+::-moz-selection { /* Code for Firefox */
+    color: rgb(255, 255, 255);
+    background: rgb(0, 0, 0);
+  }
+  
+  ::selection {
+    color: rgb(255, 255, 255);
+    background: rgb(0, 0, 0);
+  }
+
+  

@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  
+  .container {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding: 64px;
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+  }
+  
+  .container::-webkit-scrollbar {
+    display: none; 
+  }
+  
+  .card {
+    min-width: 158px; /* Lebar minimum setiap card */
+    height: auto;
+    backdrop-filter: blur(11px) saturate(180%);
+    -webkit-backdrop-filter: blur(11px) saturate(180%);
+    background: linear-gradient(140deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.01));
+    border-radius: 12px;
+    border: 0.5px solid rgba(255, 255, 255, 0.125);
+    border-radius: 10px;
+    text-align: center;
+    padding: 16px;
+    box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.1);
+  }
+  
+  .card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  h2 {
+    color:white;
+    margin-top: 10px;
+    font-size: 1.2rem;
+  }
+  
+  p {
+    font-size: 0.9rem;
+    color: #bbb;
+  }
+  
+  /* Responsif untuk HP */
+  @media (max-width: 768px) {
+    .container {
+      flex-wrap: nowrap;
+      gap: 8px;
+    }
+  
+    .card {
+      flex: 0 0 90%; /* Setiap card memenuhi layar hampir penuh */
+      margin-right: 10px;
+    }
+  
+    body {
+      overflow-y: auto;
+    }
+  }
+  
+  /* Responsif untuk HP */
+@media (max-width: 768px) {
+    .container {
+      flex-wrap: nowrap;
+      gap: 8px; /* Jarak antar card */
+    }
+  
+    .card {
+      flex: 0 0 80%; /* Card lebih kecil pada layar HP */
+      margin-right: 10px;
+      padding: 10px; /* Kurangi padding card */
+      min-width: 250px; /* Lebar minimum card lebih kecil */
+    }
+  
+    .card img {
+      max-width: 90%; /* Gambar mengecil di dalam card */
+      height: auto;
+      border-radius: 8px;
+    }
+  
+    h2 {
+      font-size: 1rem; /* Ukuran font judul lebih kecil */
+    }
+  
+    p {
+      font-size: 0.8rem; /* Ukuran font deskripsi lebih kecil */
+    }
+  
+    .card::before {
+      left: -10px; /* Sedikit lebih pendek untuk HP */
+      width: 110%; /* Lebar pseudo-element lebih kecil */
+      height: 50%; /* Tinggi pseudo-element lebih kecil */
+    }
+  }
+  

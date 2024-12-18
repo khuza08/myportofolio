@@ -1,0 +1,99 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: none;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
+body {
+    overflow: hidden;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    padding-bottom: 12vh;
+}
+
+.images {
+    background: linear-gradient(140deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.01));
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    white-space: nowrap;
+    position: relative;
+    width: 72vw; /* Lebar slider */
+    height: auto; /* Tinggi slider */
+    overflow: hidden;
+}
+
+.images::before, .images::after {
+    position: absolute;
+    top: 0;
+    width: 150px; /* Persempit gradasi */
+    height: 100%;
+    content: "";
+    z-index: 1;
+}
+
+.images::before {
+    left: 0;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0), rgb(0, 0, 0));
+}
+
+.images::after {
+    right: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(0, 0, 0));
+}
+
+.images:hover .images-slide {
+    animation-play-state: paused;
+}
+
+.images-slide {
+    display: inline-block;
+    animation: 28s slide infinite linear; 
+}
+
+.images-slide img {
+    width: 384px;
+    margin: 0 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.images-slide img:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.5));
+}
+
+@keyframes slide {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@media(max-width: 640px){
+    .images-slide img {
+        width: 256px;
+        height: 100%;
+    }
+
+    .images {
+        width: 312px;
+        height: auto;
+    }
+}
+
