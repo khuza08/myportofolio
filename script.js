@@ -1,19 +1,22 @@
+// Hapus semua kode JavaScript lama
 
-/* Dropdown */
-const toggleBtn = document.querySelector('.toggle-btn')
-const toggleBtnIcon = document.querySelector('.toggle-btn i')
-const dropDownMenu = document.querySelector('.dropdown-menu')
+/* Ganti dengan kode berikut: */
 
-toggleBtn.onclick = function (){
-  dropDownMenu.classList.toggle('open')
-  const isOpen = dropDownMenu.classList.contains('open')
+// Dropdown
+const toggleBtn = document.querySelector('.toggle-btn');
+const toggleBtnIcon = document.querySelector('.toggle-btn i');
+const dropDownMenu = document.querySelector('.dropdown-menu');
 
-  toggleBtnIcon.classList = isOpen
-    ? 'fa-solid fa-xmark'
-    : 'fa-solid fa-bars'
+toggleBtn.onclick = function () {
+    dropDownMenu.classList.toggle('open');
+    const isOpen = dropDownMenu.classList.contains('open');
+
+    toggleBtnIcon.classList = isOpen
+        ? 'fa-solid fa-xmark'
+        : 'fa-solid fa-bars';
 }
 
-/* Active page */
+// Active page
 const links = document.querySelectorAll('.navbar .links a');
 
 links.forEach(link => {
@@ -23,56 +26,52 @@ links.forEach(link => {
     });
 });
 
-/* Ajaxxx */
-
+// AJAX Loading with Updated Code
 document.addEventListener("DOMContentLoaded", () => {
-   const links = document.querySelectorAll(".nav-link, .dropdown-item");
-   const content = document.getElementById("content");
+    const links = document.querySelectorAll(".nav-link, .dropdown-item");
+    const content = document.getElementById("content");
 
-   links.forEach(link => {
-       link.addEventListener("click", (e) => {
-           e.preventDefault();
-           const page = e.target.getAttribute("data-page");
+    links.forEach(link => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const page = e.target.getAttribute("data-page");
+            console.log("Loading page:", page); // Debug: halaman yang dimuat
 
-           // AJAX request
-           fetch(`pages/${page}.html`)
-               .then(response => {
-                   if (!response.ok) {
-                       throw new Error("Page not found");
-                   }
-                   return response.text();
-               })
-               .then(data => {
-                   content.innerHTML = data;
-                   setActiveLink(page);
-               })
-               .catch(error => {
-                   content.innerHTML = `<p>Error: ${error.message}</p>`;
-               });
-       });
-   });
+            fetch(`pages/${page}.html?v=${new Date().getTime()}`) // Menambahkan timestamp
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Page not found");
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    while (content.firstChild) {
+                        content.removeChild(content.firstChild);
+                    }
 
-   // Fungsi untuk update link aktif
-   function setActiveLink(page) {
-       links.forEach(link => {
-           if (link.getAttribute("data-page") === page) {
-               link.classList.add("active");
-           } else {
-               link.classList.remove("active");
-           }
-       });
-   }
-});
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = data;
 
+                    while (tempDiv.firstChild) {
+                        content.appendChild(tempDiv.firstChild);
+                    }
 
-const navLinks = document.querySelectorAll('.nav-link');
-
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        // Hapus class "active" dari semua link
-        navLinks.forEach(nav => nav.classList.remove('active'));
-        // Tambahin class "active" ke link yang diklik
-        link.classList.add('active');
+                    setActiveLink(page);
+                    console.log("Content loaded successfully"); // Debug: konten berhasil dimuat
+                })
+                .catch(error => {
+                    content.textContent = `Error: ${error.message}`;
+                });
+        });
     });
-});
 
+    function setActiveLink(page) {
+        links.forEach(link => {
+            if (link.getAttribute("data-page") === page) {
+                link.classList.add("active");
+            } else {
+                link.classList.remove("active");
+            }
+        });
+    }
+});

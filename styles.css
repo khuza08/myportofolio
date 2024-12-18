@@ -22,16 +22,6 @@ body {
     transition: opacity 1s ease-in-out;
 }
 
-/* Fade-out effect */
-.fade-out {
-    opacity: 0;
-}
-
-/* Fade-in effect */
-.fade-in {
-    opacity: 1;
-}
-
 li {
     list-style: none;
 }
