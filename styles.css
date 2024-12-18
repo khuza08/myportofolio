@@ -280,6 +280,10 @@ section#hero {
         font-size: 1.8rem;
     }
 
+    #hero a {
+        font-size: 1.3rem;
+    }
+
 }
 
 
@@ -290,6 +294,17 @@ section#hero {
         width: unset;
     }
 
+    #hero h1 {
+        font-size: 1.5rem;
+    }
+
+    #hero span {
+        font-size: 1rem;
+    }
+
+    #hero a {
+        font-size: 1.1rem;
+    }
 
 }
 
